@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'likes/create'
+
+  get 'likes/destroy'
+
   get 'relationships/create'
 
   get 'relationships/destroy'
@@ -26,4 +30,14 @@ Rails.application.routes.draw do
 
   resources :microposts, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
+
+  resources :users, only: [:index, :show, :new, :create] do
+    member do
+      get :likes
+    end
+    collection do
+      get :search
+    end
+  end  
+  resources :likes, only: [:create, :destroy]
 end
