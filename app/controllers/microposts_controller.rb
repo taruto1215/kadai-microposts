@@ -26,7 +26,6 @@ class MicropostsController < ApplicationController
     @likes_microposts = @user.likes.page(params[:page])
   end
   
-  
   private
   
   def micropost_params
